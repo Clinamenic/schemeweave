@@ -1,0 +1,161 @@
+{
+    "@context": [
+        "https://schema.org/",
+        "http://usefulinc.com/ns/doap#"
+    ],
+    "@type": "SoftwareApplication",
+    "name": "Example Project Name",
+    "description": "A comprehensive example of DOAP.json structure with all possible fields and their purposes",
+    "url": "https://example-project.com",
+    "version": "1.0.0",
+    "dateCreated": "2024-01-01T00:00:00Z",
+    "dateModified": "2024-01-15T12:00:00Z",
+    "license": "https://opensource.org/licenses/MIT",
+    "programmingLanguage": [
+        "TypeScript",
+        "JavaScript",
+        "HTML",
+        "CSS"
+    ],
+    "runtimePlatform": "Web Browser",
+    "applicationCategory": "WebApplication",
+    "operatingSystem": "Any",
+    "author": {
+        "@type": "Person",
+        "name": "John Doe",
+        "email": "john@example.com",
+        "url": "https://johndoe.com"
+    },
+    "maintainer": {
+        "@type": "Person",
+        "name": "Jane Smith",
+        "email": "jane@example.com"
+    },
+    "contributor": [
+        {
+            "@type": "Person",
+            "name": "Contributor One",
+            "email": "contributor1@example.com"
+        },
+        {
+            "@type": "Person",
+            "name": "Contributor Two",
+            "email": "contributor2@example.com"
+        }
+    ],
+    "publisher": {
+        "@type": "Organization",
+        "name": "Example Organization",
+        "url": "https://example-org.com"
+    },
+    "repository": {
+        "@type": "SoftwareSourceCode",
+        "url": "https://github.com/example/project",
+        "programmingLanguage": "TypeScript",
+        "license": "https://opensource.org/licenses/MIT",
+        "codeRepository": "https://github.com/example/project"
+    },
+    "issueTracker": "https://github.com/example/project/issues",
+    "homepage": "https://example-project.com",
+    "downloadUrl": "https://github.com/example/project/releases",
+    "releaseNotes": "https://github.com/example/project/releases",
+    "documentation": "https://example-project.com/docs",
+    "keywords": [
+        "web-app",
+        "react",
+        "typescript",
+        "vite",
+        "arweave"
+    ],
+    "featureList": [
+        "Modern React + TypeScript architecture",
+        "Vite build system for fast development",
+        "Arweave deployment for permanent hosting",
+        "Responsive design for all devices",
+        "SEO optimized with metadata injection"
+    ],
+    "softwareRequirements": [
+        {
+            "@type": "SoftwareApplication",
+            "name": "Node.js",
+            "version": "18+"
+        },
+        {
+            "@type": "SoftwareApplication",
+            "name": "npm",
+            "version": "8+"
+        }
+    ],
+    "deployments": [
+        {
+            "@type": "WebSite",
+            "version": "1.0.0",
+            "url": "https://arweave.net/abc123def456",
+            "transactionId": "abc123def456ghi789jkl012mno345pqr678stu901vwx234yz",
+            "arweaveUrl": "https://arweave.net/abc123def456ghi789jkl012mno345pqr678stu901vwx234yz",
+            "deploymentDate": "2024-01-15T12:00:00Z",
+            "environment": "production",
+            "description": "Permanent deployment on Arweave permaweb",
+            "hostingProvider": "Arweave"
+        },
+        {
+            "@type": "WebSite",
+            "version": "0.9.0",
+            "url": "https://arweave.net/xyz789abc123",
+            "transactionId": "xyz789abc123def456ghi789jkl012mno345pqr678stu901vwx234yz",
+            "arweaveUrl": "https://arweave.net/xyz789abc123def456ghi789jkl012mno345pqr678stu901vwx234yz",
+            "deploymentDate": "2024-01-10T10:00:00Z",
+            "environment": "development",
+            "description": "Development deployment on Arweave permaweb",
+            "hostingProvider": "Arweave"
+        }
+    ],
+    "buildSystem": {
+        "@type": "SoftwareApplication",
+        "name": "Vite",
+        "version": "5.0+"
+    },
+    "dependencies": [
+        {
+            "@type": "SoftwareApplication",
+            "name": "React",
+            "version": "18.2.0"
+        },
+        {
+            "@type": "SoftwareApplication",
+            "name": "TypeScript",
+            "version": "5.3+"
+        },
+        {
+            "@type": "SoftwareApplication",
+            "name": "Vite",
+            "version": "5.0.8"
+        }
+    ],
+    "changelog": {
+        "@type": "WebPage",
+        "url": "https://example-project.com/changelog",
+        "description": "Project changelog with version history and commit details"
+    },
+    "relatedProjects": [
+        {
+            "@type": "SoftwareApplication",
+            "name": "Related Project One",
+            "url": "https://related-project-one.com",
+            "description": "A related project that complements this one"
+        },
+        {
+            "@type": "SoftwareApplication",
+            "name": "Related Project Two",
+            "url": "https://related-project-two.com",
+            "description": "Another related project in the ecosystem"
+        }
+    ],
+    "funding": {
+        "@type": "MonetaryGrant",
+        "funder": {
+            "@type": "Organization",
+            "name": "Example Foundation"
+        }
+    }
+}

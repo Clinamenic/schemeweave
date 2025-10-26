@@ -1,0 +1,57 @@
+{
+  "@context": {
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "schema": "https://schema.org/",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#"
+  },
+  "@id": "https://YOURDOMAIN.com/projects/PROJECT_ID",
+  "@type": "doap:Project",
+  "doap:name": "YOUR PROJECT NAME",
+  "doap:description": "Detailed description of your project, its purpose, and key features",
+  "doap:shortdesc": "Brief one-line description of the project",
+  "doap:homepage": "https://YOURPROJECT.com",
+  "doap:created": "YYYY-MM-DD",
+  "doap:maintainer": {
+    "@id": "https://YOURDOMAIN.com/people/YOURUSERNAME",
+    "@type": "foaf:Person",
+    "foaf:name": "YOUR FULL NAME"
+  },
+  "doap:developer": [
+    {
+      "@id": "https://YOURDOMAIN.com/people/YOURUSERNAME"
+    }
+  ],
+  "doap:documenter": {
+    "@id": "https://YOURDOMAIN.com/people/YOURUSERNAME"
+  },
+  "doap:repository": {
+    "@type": "doap:GitRepository",
+    "doap:location": "https://github.com/YOURUSERNAME/YOURPROJECT.git",
+    "doap:browse": "https://github.com/YOURUSERNAME/YOURPROJECT"
+  },
+  "doap:license": "https://opensource.org/licenses/LICENSE-TYPE",
+  "doap:programming-language": ["Language1", "Language2", "Language3"],
+  "doap:category": "https://github.com/topics/CATEGORY",
+  "doap:download-page": "https://github.com/YOURUSERNAME/YOURPROJECT/releases",
+  "doap:bug-database": "https://github.com/YOURUSERNAME/YOURPROJECT/issues",
+  "doap:mailing-list": "https://groups.google.com/forum/#!forum/YOURPROJECT",
+  "doap:wiki": "https://github.com/YOURUSERNAME/YOURPROJECT/wiki",
+  "doap:screenshots": "https://github.com/YOURUSERNAME/YOURPROJECT#screenshots",
+  "doap:release": [
+    {
+      "@type": "doap:Version",
+      "doap:name": "v1.0.0",
+      "doap:revision": "1.0.0",
+      "doap:created": "YYYY-MM-DD",
+      "doap:branch": "stable"
+    }
+  ],
+  "schema:isRelatedTo": [
+    {
+      "@type": "schema:Service",
+      "name": "Related Service Name",
+      "description": "Description of how this project relates to a service you offer"
+    }
+  ]
+}

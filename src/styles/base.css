@@ -1,0 +1,133 @@
+/* Base element styles for terminal aesthetic */
+
+body {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-md);
+    color: var(--terminal-fg);
+    background-color: var(--terminal-bg);
+    margin: 0;
+    padding: 0;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--terminal-fg);
+    font-family: var(--font-mono);
+}
+
+h1 {
+    font-size: var(--font-size-xl);
+}
+
+h2 {
+    font-size: var(--font-size-lg);
+}
+
+h3 {
+    font-size: var(--font-size-md);
+}
+
+h4 {
+    font-size: var(--font-size-sm);
+}
+
+h5 {
+    font-size: var(--font-size-sm);
+}
+
+h6 {
+    font-size: var(--font-size-xs);
+}
+
+p {
+    color: var(--ui-text-muted);
+    line-height: 1.5;
+    font-family: var(--font-mono);
+}
+
+small {
+    font-size: var(--font-size-xs);
+    color: var(--ui-text-muted);
+}
+
+code {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-sm);
+    background-color: var(--ui-surface);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: 4px;
+    color: var(--terminal-fg);
+    border: 1px solid var(--terminal-border);
+}
+
+/* Interactive elements */
+button {
+    font-weight: 500;
+    transition: all 0.2s ease;
+    font-family: var(--font-mono);
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--terminal-fg);
+    outline-offset: 2px;
+}
+
+input,
+textarea,
+select {
+    border: 1px solid var(--terminal-border);
+    border-radius: 4px;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: var(--ui-surface);
+    color: var(--terminal-fg);
+    transition: border-color 0.2s ease;
+    font-family: var(--font-mono);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--terminal-fg);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 255, 0, 0.2);
+}
+
+/* Links */
+a {
+    color: var(--accent-cyan);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--terminal-fg);
+}
+
+/* Scrollbars for terminal aesthetic */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--terminal-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--terminal-border);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--terminal-fg);
+}

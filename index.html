@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Schemeweave - Semantic Document Composer</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="icon.svg" />
+    <link rel="alternate icon" type="image/png" href="favicon.png" />
+
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Schemeweave - Semantic Document Composer" />
+    <meta
+      name="description"
+      content="Semantic Document Composer - Web-based tool for creating DOAP and FOAF documents with form-based interface and real-time JSON preview"
+    />
+    <meta name="author" content="Spencer Saar Cavanaugh" />
+    <meta name="copyright" content="Clinamenic LLC" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="English" />
+    <meta name="theme-color" content="#007bff" />
+    <meta
+      name="keywords"
+      content="semantic-web, doap, foaf, document-composer, form-builder, json-ld, web, client-side, arweave, permanent"
+    />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://schemeweave.clinamenic.com" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://schemeweave.clinamenic.com" />
+    <meta
+      property="og:title"
+      content="Schemeweave - Semantic Document Composer"
+    />
+    <meta
+      property="og:description"
+      content="Create semantic documents with DOAP and FOAF schemas using our intuitive form-based interface with real-time JSON preview."
+    />
+    <meta property="og:image" content="image.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:site_name" content="Schemeweave" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://schemeweave.clinamenic.com" />
+    <meta
+      name="twitter:title"
+      content="Schemeweave - Semantic Document Composer"
+    />
+    <meta
+      name="twitter:description"
+      content="Create semantic documents with DOAP and FOAF schemas using our intuitive form-based interface with real-time JSON preview."
+    />
+    <meta name="twitter:image" content="image.png" />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Schemeweave",
+        "url": "https://schemeweave.clinamenic.com",
+        "applicationCategory": "Developer Tools",
+        "description": "Semantic Document Composer - Web-based tool for creating DOAP and FOAF documents with form-based interface and real-time JSON preview",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript enabled",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "author": {
+          "@type": "Organization",
+          "name": "Clinamenic LLC",
+          "url": "https://clinamenic.com"
+        },
+        "featureList": [
+          "DOAP Schema Support with predefined templates",
+          "FOAF Schema Support with relationship management",
+          "Real-time JSON Preview with live updates",
+          "Form-based Interface with validation",
+          "Multiple Export Formats (JSON, JSON-LD, XML, Turtle)"
+        ],
+        "keywords": "semantic web, DOAP, FOAF, document composer, form builder, JSON-LD, web3, decentralized application, Arweave",
+        "sameAs": ["https://github.com/clinamenic/schemeweave"]
+      }
+    </script>
+
+    <!-- Terminal Font -->
+    <style>
+      @font-face {
+        font-family: "JetBrainsMono";
+        src: url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap");
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

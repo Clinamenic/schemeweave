@@ -1,0 +1,6 @@
+/* Import global styles in order */
+@import './styles/variables.css';
+@import './styles/reset.css';
+@import './styles/base.css';
+
+/* Additional global styles can go here */

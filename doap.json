@@ -1,0 +1,136 @@
+{
+  "@context": [
+    "https://schema.org/",
+    "http://usefulinc.com/ns/doap#"
+  ],
+  "@type": "SoftwareApplication",
+  "name": "Schemeweave",
+  "description": "Semantic Document Composer - Web-based tool for creating DOAP and FOAF documents with form-based interface and real-time JSON preview",
+  "url": "https://github.com/clinamenic/schemeweave",
+  "version": "0.1.0",
+  "dateCreated": "2025-10-26T00:00:00Z",
+  "dateModified": "2025-10-26T16:56:25Z",
+  "license": "https://opensource.org/licenses/MIT",
+  "programmingLanguage": [
+    "TypeScript",
+    "JavaScript"
+  ],
+  "runtimePlatform": "Web Browser",
+  "applicationCategory": "WebApplication",
+  "operatingSystem": "Any",
+  "author": {
+    "@type": "Person",
+    "name": "Spencer Saar Cavanaugh",
+    "email": "ssc@clinamenic.com",
+    "url": "https://www.clinamenic.com"
+  },
+  "maintainer": {
+    "@type": "Person",
+    "name": "Spencer Saar Cavanaugh",
+    "email": "ssc@clinamenic.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Clinamenic LLC",
+    "url": "https://www.clinamenic.com"
+  },
+  "repository": {
+    "@type": "SoftwareSourceCode",
+    "url": "https://github.com/clinamenic/schemeweave",
+    "programmingLanguage": "TypeScript",
+    "license": "https://opensource.org/licenses/MIT",
+    "codeRepository": "https://github.com/clinamenic/schemeweave"
+  },
+  "issueTracker": "https://github.com/clinamenic/schemeweave/issues",
+  "homepage": "https://schemeweave.clinamenic.com",
+  "releaseNotes": "https://github.com/clinamenic/schemeweave/blob/main/CHANGELOG.md",
+  "documentation": "https://github.com/clinamenic/schemeweave/blob/main/README.md",
+  "keywords": [
+    "semantic-web",
+    "doap",
+    "foaf",
+    "document-composer",
+    "form-builder",
+    "json-ld",
+    "web",
+    "client-side",
+    "arweave",
+    "permanent"
+  ],
+  "featureList": [
+    "DOAP Schema Support with predefined templates",
+    "FOAF Schema Support with relationship management",
+    "Real-time JSON Preview with live updates",
+    "Form-based Interface with validation",
+    "Multiple Export Formats (JSON, JSON-LD, XML, Turtle)",
+    "Cross-Schema Entity References",
+    "Terminal Aesthetic Design",
+    "100% Client-Side operation",
+    "Permanent Storage on Arweave"
+  ],
+  "softwareRequirements": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "Node.js",
+      "version": "18+"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "npm",
+      "version": "8+"
+    }
+  ],
+  "deployments": [],
+  "buildSystem": {
+    "@type": "SoftwareApplication",
+    "name": "Vite",
+    "version": "5.0+"
+  },
+  "dependencies": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "React",
+      "version": "18.2.0"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "TypeScript",
+      "version": "5.3+"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Zustand",
+      "version": "4.4.6"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "react-hook-form",
+      "version": "7.48.2"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "zod",
+      "version": "3.22.4"
+    }
+  ],
+  "changelog": {
+    "@type": "WebPage",
+    "url": "https://github.com/clinamenic/schemeweave/blob/main/CHANGELOG.md",
+    "description": "Project changelog with version history and commit details"
+  },
+  "relatedProjects": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "Lattelier",
+      "url": "https://github.com/clinamenic/lattelier",
+      "description": "Related lattice distortion and pattern generation tool"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Autoglypha",
+      "url": "https://github.com/clinamenic/autoglypha",
+      "description": "Related generative art project"
+    }
+  ],
+  "backupHistory": []
+}
