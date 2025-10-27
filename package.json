@@ -1,6 +1,6 @@
 {
   "name": "schemeweave",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "type": "module",
   "description": "Semantic Document Composer - Web-based tool for creating DOAP and FOAF documents with form-based interface and real-time JSON preview",
   "scripts": {
@@ -17,12 +17,16 @@
     "doap:sync": ".workspace/scripts/doap-sync.sh"
   },
   "dependencies": {
+    "@dnd-kit/core": "^6.3.1",
+    "@dnd-kit/modifiers": "^9.0.0",
+    "@dnd-kit/sortable": "^10.0.0",
+    "@dnd-kit/utilities": "^3.2.2",
+    "@hookform/resolvers": "^3.3.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "zustand": "^4.4.6",
     "react-hook-form": "^7.48.2",
     "zod": "^3.22.4",
-    "@hookform/resolvers": "^3.3.2"
+    "zustand": "^4.4.6"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",

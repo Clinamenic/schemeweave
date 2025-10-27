@@ -16,6 +16,10 @@ export interface SchemaField {
   helpText: string;
   validation?: ValidationRule[];
   nestedFields?: SchemaField[];
+  order?: number;
+  locked?: boolean;
+  isCustom?: boolean;
+  dragHandleId?: string;
 }
 
 export interface SchemaTemplate {
@@ -199,4 +203,43 @@ export interface Account {
   "@type": "OnlineAccount";
   accountName: string;
   accountServiceHomepage: string;
+}
+
+// Drag and Drop Field Management Types
+export interface CustomFieldDefinition {
+  id: string;
+  label: string;
+  type: "string" | "number" | "boolean" | "array" | "object" | "url" | "email";
+  required: boolean;
+  description: string;
+  helpText: string;
+  order: number;
+  isCustom: true;
+  dragHandleId: string;
+}
+
+export interface ArrayItem {
+  id: string;
+  value: string;
+  order: number;
+}
+
+export interface FieldReorderEvent {
+  fieldId: string;
+  oldOrder: number;
+  newOrder: number;
+}
+
+export interface ArrayItemReorderEvent {
+  fieldId: string;
+  itemId: string;
+  oldOrder: number;
+  newOrder: number;
+}
+
+export interface ExtendedSchemaField extends SchemaField {
+  order: number;
+  locked: boolean;
+  isCustom: boolean;
+  dragHandleId: string;
 }

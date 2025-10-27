@@ -1,44 +1,38 @@
-# {{PROJECT_NAME}}
+# Schemeweave
 
-{{PROJECT_DESCRIPTION}}
+Semantic Document Composer - Web-based tool for creating DOAP and FOAF documents with form-based interface and real-time JSON preview.
 
 A web application built for permanent deployment to [Arweave](https://arweave.org), the decentralized permanent storage network.
 
-## DOAP.json Template System
+## Overview
 
-This template workspace includes a comprehensive DOAP.json metadata management system:
-
-- **`doap.json`** - Central metadata source with placeholder variables
-- **Automatic HTML metadata injection** - SEO and social media tags generated from DOAP.json
-- **Version management** - Semantic versioning with automatic synchronization
-- **Deployment tracking** - Arweave deployments automatically recorded
-- **Cross-file synchronization** - Keep all project files in sync
-- **Public metadata access** - DOAP.json automatically included in deployed sites
-
-### Initializing a New Project
-
-1. **Clone this template workspace**
-2. **Replace placeholders** in `doap.json` with your project information
-3. **Run synchronization** to update all files: `.workspace/scripts/doap-sync.sh`
-4. **Test the build process** to ensure metadata injection works
-
-For detailed instructions, see the [Project Initialization Guide](.cursor/rules/project_initialization.mdc).
+Schemeweave is a semantic document composer that enables users to create structured documents following established schemas like DOAP (Description of a Project) and FOAF (Friend of a Friend). The application provides an intuitive form-based interface with real-time preview capabilities and multiple export formats.
 
 ## Features
 
-- 100% Client-Side - Runs entirely in the browser
-- Permanent Storage - Deploy once, accessible forever on Arweave
-- Modern Stack - React 18, TypeScript, Vite
-- Raw CSS - Lightweight, maintainable styling with CSS custom properties
-- Zero Config - Pre-configured for optimal Arweave deployment
+- **Schema-Based Form Generation**: Support for DOAP and FOAF schemas with dynamic form creation
+- **Real-Time Preview**: Live JSON preview with multiple format support (JSON, JSON-LD, XML, Turtle)
+- **Export Functionality**: Download documents in various formats with custom filename and format selection
+- **Terminal Aesthetic**: Clean, professional interface inspired by classic computer terminals
+- **Responsive Design**: Works seamlessly across desktop and mobile devices
+- **Accessibility**: Full keyboard navigation and screen reader support
+- **SAWA Framework Compliance**: Built following the Semantic Arweave Web App specification
+
+## Technical Architecture
+
+- **Frontend**: React 18 with TypeScript for type safety and modern development experience
+- **Build System**: Vite for fast development and optimized production builds
+- **State Management**: Zustand for lightweight, efficient state management
+- **Form Handling**: react-hook-form with Zod validation for robust form processing
+- **Styling**: Semantic CSS with design tokens and modern CSS features
+- **Deployment**: Arweave permaweb for permanent, decentralized hosting
 
 ## Quick Start
 
 ### Prerequisites
 
 - Node.js 18+ and npm 9+
-- [Arweave wallet](https://arweave.app) with AR tokens (for deployment)
-- [arkb](https://github.com/textury/arkb) CLI tool: `npm install -g arkb`
+- Modern web browser with JavaScript enabled
 
 ### Installation
 
@@ -62,12 +56,20 @@ npm run build
 
 The built files will be in the `dist` directory.
 
+## Usage
+
+1. **Select Schema**: Choose between DOAP or FOAF schema from the navigation header
+2. **Choose Template**: Select a template within the chosen schema
+3. **Fill Form**: Complete the form fields with your document information
+4. **Preview**: View real-time preview of your document in the sidebar
+5. **Export**: Download your document in your preferred format (JSON, JSON-LD, XML, or Turtle)
+
 ## Deploy to Arweave
 
 ### Setup
 
 1. Get an Arweave wallet from [arweave.app](https://arweave.app)
-2. Fund it with AR tokens (~0.001-0.01 AR per deployment)
+2. Fund it with AR tokens (approximately 0.001-0.01 AR per deployment)
 3. Save your wallet to `.workspace/config/wallet.json`
 
 ### Deploy Commands
@@ -83,25 +85,30 @@ npm run deploy:dev
 npm run deploy:quick
 ```
 
-### Deployment Guide
-
-For detailed instructions, troubleshooting, and best practices, see:
-- [Arweave Deployment Guide](.workspace/docs/temp/arweave-deployment-guide.md)
-
 ## Project Structure
 
 ```
 .
 ├── src/                    # Application source code
 │   ├── components/         # React components
-│   ├── style/             # CSS architecture
-│   │   ├── variables.css  # Design tokens (colors, spacing, etc.)
+│   │   ├── DocumentForm.tsx    # Dynamic form generation
+│   │   ├── PreviewPanel.tsx    # Real-time preview
+│   │   ├── NavigationHeader.tsx # Schema/template selection
+│   │   ├── Toolbar.tsx         # Global actions
+│   │   ├── ExportDialog.tsx    # Export functionality
+│   │   └── icons.tsx           # SVG icon components
+│   ├── styles/            # CSS architecture
+│   │   ├── variables.css  # Design tokens
 │   │   ├── reset.css      # CSS reset
-│   │   └── base.css       # Base element styles
-│   ├── types/             # TypeScript type definitions
-│   ├── utils/             # Utility functions
-│   ├── App.tsx            # Main app component
-│   ├── App.css            # App-specific styles
+│   │   ├── base.css       # Base element styles
+│   │   └── utilities.css  # Utility classes
+│   ├── stores/            # State management
+│   │   └── useAppStore.ts # Zustand store
+│   ├── services/          # Business logic
+│   │   └── schemas.ts     # Schema definitions
+│   ├── types/             # TypeScript definitions
+│   ├── App.tsx            # Main application component
+│   ├── App.css            # Application-specific styles
 │   ├── main.tsx           # Entry point
 │   └── index.css          # Global style imports
 ├── .workspace/            # Development scaffolding
@@ -110,6 +117,7 @@ For detailed instructions, troubleshooting, and best practices, see:
 │   └── docs/              # Documentation
 ├── dist/                  # Build output (gitignored)
 ├── index.html             # HTML entry point
+├── doap.json              # Project metadata
 ├── package.json           # Project dependencies
 ├── vite.config.ts         # Build configuration
 └── README.md              # This file
@@ -117,23 +125,27 @@ For detailed instructions, troubleshooting, and best practices, see:
 
 ## Tech Stack
 
-- **Framework:** React 18 + TypeScript
-- **Build Tool:** Vite
-- **Styling:** Modern CSS (Custom Properties, Cascade Layers)
-- **Deployment:** Arweave Permaweb
+- **Framework**: React 18 + TypeScript
+- **Build Tool**: Vite
+- **State Management**: Zustand
+- **Form Handling**: react-hook-form + Zod
+- **Styling**: Modern CSS with custom properties
+- **Deployment**: Arweave Permaweb
 
 ## CSS Architecture
 
-This template uses raw CSS with modern features instead of utility frameworks like Tailwind:
+Schemeweave uses a semantic CSS approach with modern features:
 
-- **Design Tokens:** Centralized variables in `variables.css`
-- **Semantic Styles:** Base element styling in `base.css`
-- **Component Scoped:** Import CSS per component
+- **Design Tokens**: Centralized variables in `src/styles/variables.css`
+- **Semantic Styles**: Meaningful class names that describe purpose
+- **Component Scoped**: CSS imported per component for maintainability
+- **Modern Features**: Custom properties, cascade layers, logical properties
 
 **Benefits:**
-- Smaller bundle size (~3KB vs 50KB+ for Tailwind)
+
+- Smaller bundle size (approximately 3KB vs 50KB+ for utility frameworks)
 - Zero runtime overhead
-- Better for permanent storage
+- Better for permanent storage on Arweave
 - Teaches modern CSS fundamentals
 
 ## Development
@@ -151,34 +163,47 @@ This template uses raw CSS with modern features instead of utility frameworks li
 
 ### Customization
 
-1. **Initialize project metadata** in `doap.json`:
-   - Replace all `{{PLACEHOLDER}}` variables with your project information
-   - Use the [Project Initialization Guide](.cursor/rules/project_initialization.mdc) for detailed instructions
+1. **Modify Design Tokens** in `src/styles/variables.css`:
 
-2. **Synchronize files** with DOAP.json:
-   ```bash
-   .workspace/scripts/doap-sync.sh
-   ```
-
-3. **Modify design tokens** in `src/styles/variables.css`:
    - Colors
    - Spacing
    - Typography
    - Shadows
 
-4. **Add components** in `src/components/`
+2. **Add New Schemas** in `src/services/schemas.ts`:
 
-5. **Add utilities** in `src/utils/`
+   - Define schema structure
+   - Add field definitions
+   - Create templates
+
+3. **Extend Components** in `src/components/`:
+
+   - Add new UI components
+   - Extend existing functionality
+
+4. **Add Utilities** in `src/utils/`:
+   - Helper functions
+   - Data processing utilities
+
+## Version Management
+
+Schemeweave follows semantic versioning with automated version management:
+
+- **Version Source**: `doap.json` serves as the single source of truth
+- **Automatic Sync**: Version updates propagate to all project files
+- **Release Process**: Automated version bumping based on conventional commits
 
 ## Documentation
 
-- [Arweave Deployment Guide](.workspace/docs/temp/arweave-deployment-guide.md)
+- [Architecture Documentation](.workspace/docs/arch/Architecture.md)
+- [SAWA Framework Specification](.workspace/docs/arch/SAWA%20Framework%20Specification.md)
 - [Development Workflow](.workspace/context.md)
-- [Refinement Plan](.workspace/docs/temp/arweave-boilerplate-refinement-plan.md)
+- [Dithering Texture Strategy](.workspace/docs/temp/2025-01-26-dithering-texture-strategy.md)
 
 ## Arweave Deployment
 
 Your app will be **permanently accessible** on Arweave at:
+
 ```
 https://arweave.net/[TRANSACTION_ID]
 ```
@@ -186,24 +211,35 @@ https://arweave.net/[TRANSACTION_ID]
 ### Optional: ArNS (Arweave Name System)
 
 Register a human-readable name at [ar.io](https://ar.io) to replace the transaction ID:
-- Example: `https://my-app.ar.io` instead of `https://arweave.net/abc123...`
+
+- Example: `https://schemeweave.ar.io` instead of `https://arweave.net/abc123...`
 
 ## Security
 
 **Important:** Never commit sensitive files!
 
 The `.gitignore` is configured to protect:
+
 - `.workspace/config/wallet.json` - Your Arweave wallet
 - `.workspace/config/deployments.json` - Deployment history
 
 Always verify these are not staged before committing:
+
 ```bash
 git status
 ```
 
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
 ## License
 
-MIT
+MIT License - see [LICENSE](LICENSE) file for details.
 
 ## Resources
 
@@ -212,4 +248,10 @@ MIT
 - [AR.IO Gateway](https://ar.io)
 - [Vite Documentation](https://vitejs.dev)
 - [React Documentation](https://react.dev)
+- [Zustand Documentation](https://github.com/pmndrs/zustand)
+- [react-hook-form Documentation](https://react-hook-form.com)
+- [Zod Documentation](https://zod.dev)
 
+## Support
+
+For questions, issues, or contributions, please visit the [GitHub repository](https://github.com/Clinamenic/schemeweave).

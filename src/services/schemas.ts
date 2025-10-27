@@ -6,14 +6,26 @@ export const doapSchema: SchemaDefinition = {
   version: '1.0',
   fields: [
     {
+      id: 'projectType',
+      label: 'Project Type',
+      type: 'string',
+      required: true,
+      description: 'The type of project being described',
+      helpText: 'Select the type of project (SoftwareApplication, WebSite, WebApplication, etc.)',
+      order: 0,
+      validation: [
+        { type: 'required', message: 'Project type is required' }
+      ]
+    },
+    {
       id: 'name',
       label: 'Project Name',
       type: 'string',
-      required: true,
-      description: 'The name of the software project',
-      helpText: 'Enter the official name of your software project',
+      required: false,
+      description: 'The name of the project',
+      helpText: 'Enter the official name of your project',
+      order: 1,
       validation: [
-        { type: 'required', message: 'Project name is required' },
         { type: 'minLength', value: 1, message: 'Project name must be at least 1 character' }
       ]
     },
@@ -21,11 +33,11 @@ export const doapSchema: SchemaDefinition = {
       id: 'description',
       label: 'Description',
       type: 'string',
-      required: true,
-      description: 'A description of the software project',
+      required: false,
+      description: 'A description of the project',
       helpText: 'Provide a clear description of what your project does',
+      order: 2,
       validation: [
-        { type: 'required', message: 'Description is required' },
         { type: 'minLength', value: 10, message: 'Description must be at least 10 characters' }
       ]
     },
@@ -33,11 +45,11 @@ export const doapSchema: SchemaDefinition = {
       id: 'version',
       label: 'Version',
       type: 'string',
-      required: true,
-      description: 'The current version of the software',
-      helpText: 'Use semantic versioning (e.g., 1.0.0)',
+      required: false,
+      description: 'The current version of the project',
+      helpText: 'Use semantic versioning (e.g., 1.0.0) or any version scheme',
+      order: 3,
       validation: [
-        { type: 'required', message: 'Version is required' },
         { type: 'pattern', value: '^\\d+\\.\\d+\\.\\d+', message: 'Version must follow semantic versioning format' }
       ]
     },
@@ -45,18 +57,19 @@ export const doapSchema: SchemaDefinition = {
       id: 'author',
       label: 'Author',
       type: 'object',
-      required: true,
-      description: 'The author of the software project',
+      required: false,
+      description: 'The author of the project',
       helpText: 'Information about the project author',
+      order: 4,
       nestedFields: [
         {
           id: 'name',
           label: 'Author Name',
           type: 'string',
-          required: true,
+          required: false,
           description: 'Full name of the author',
           helpText: 'Enter the author\'s full name',
-          validation: [{ type: 'required', message: 'Author name is required' }]
+          validation: []
         },
         {
           id: 'email',
@@ -83,8 +96,9 @@ export const doapSchema: SchemaDefinition = {
       label: 'License',
       type: 'url',
       required: false,
-      description: 'The license under which the software is distributed',
+      description: 'The license under which the project is distributed',
       helpText: 'URL to the license (e.g., https://opensource.org/licenses/MIT)',
+      order: 5,
       validation: [{ type: 'url', message: 'Please enter a valid license URL' }]
     },
     {
@@ -92,8 +106,9 @@ export const doapSchema: SchemaDefinition = {
       label: 'Homepage',
       type: 'url',
       required: false,
-      description: 'The homepage of the software project',
+      description: 'The homepage of the project',
       helpText: 'URL to the project\'s main website',
+      order: 6,
       validation: [{ type: 'url', message: 'Please enter a valid homepage URL' }]
     },
     {
@@ -103,12 +118,13 @@ export const doapSchema: SchemaDefinition = {
       required: false,
       description: 'Source code repository information',
       helpText: 'Details about where the source code is hosted',
+      order: 7,
       nestedFields: [
         {
           id: 'url',
           label: 'Repository URL',
           type: 'url',
-          required: true,
+          required: false,
           description: 'URL to the source code repository',
           helpText: 'Enter the repository URL (e.g., GitHub, GitLab)',
           validation: [{ type: 'url', message: 'Please enter a valid repository URL' }]
@@ -129,7 +145,8 @@ export const doapSchema: SchemaDefinition = {
       type: 'array',
       required: false,
       description: 'Keywords describing the project',
-      helpText: 'Add relevant keywords to help categorize your project'
+      helpText: 'Add relevant keywords to help categorize your project',
+      order: 8
     },
     {
       id: 'featureList',
@@ -137,7 +154,8 @@ export const doapSchema: SchemaDefinition = {
       type: 'array',
       required: false,
       description: 'List of key features',
-      helpText: 'Describe the main features of your project'
+      helpText: 'Describe the main features of your project',
+      order: 9
     }
   ],
   templates: [
@@ -146,6 +164,7 @@ export const doapSchema: SchemaDefinition = {
       name: 'Software Project',
       description: 'A general software project template',
       defaultValues: {
+        projectType: 'SoftwareApplication',
         name: '',
         description: '',
         version: '0.1.0',
@@ -164,6 +183,7 @@ export const doapSchema: SchemaDefinition = {
       name: 'Web Application',
       description: 'Template for web applications',
       defaultValues: {
+        projectType: 'WebApplication',
         name: '',
         description: '',
         version: '0.1.0',
@@ -197,6 +217,8 @@ export const foafSchema: SchemaDefinition = {
       required: true,
       description: 'The name of the person',
       helpText: 'Enter your full name',
+      order: 0,
+      locked: true,
       validation: [
         { type: 'required', message: 'Name is required' },
         { type: 'minLength', value: 1, message: 'Name must be at least 1 character' }
@@ -209,6 +231,7 @@ export const foafSchema: SchemaDefinition = {
       required: false,
       description: 'Email address',
       helpText: 'Enter your email address',
+      order: 1,
       validation: [{ type: 'email', message: 'Please enter a valid email address' }]
     },
     {
@@ -218,6 +241,7 @@ export const foafSchema: SchemaDefinition = {
       required: false,
       description: 'Personal homepage or website',
       helpText: 'URL to your personal website or homepage',
+      order: 2,
       validation: [{ type: 'url', message: 'Please enter a valid URL' }]
     },
     {
@@ -226,7 +250,8 @@ export const foafSchema: SchemaDefinition = {
       type: 'array',
       required: false,
       description: 'People you know',
-      helpText: 'Add people you know or work with'
+      helpText: 'Add people you know or work with',
+      order: 3
     },
     {
       id: 'interest',
@@ -234,7 +259,8 @@ export const foafSchema: SchemaDefinition = {
       type: 'array',
       required: false,
       description: 'Your interests and hobbies',
-      helpText: 'List your interests, hobbies, or areas of expertise'
+      helpText: 'List your interests, hobbies, or areas of expertise',
+      order: 4
     },
     {
       id: 'currentProject',
@@ -242,7 +268,8 @@ export const foafSchema: SchemaDefinition = {
       type: 'array',
       required: false,
       description: 'Projects you are currently working on',
-      helpText: 'List your current projects or work'
+      helpText: 'List your current projects or work',
+      order: 5
     },
     {
       id: 'workplaceHomepage',
@@ -251,6 +278,7 @@ export const foafSchema: SchemaDefinition = {
       required: false,
       description: 'Your workplace or company website',
       helpText: 'URL to your workplace or company website',
+      order: 6,
       validation: [{ type: 'url', message: 'Please enter a valid URL' }]
     },
     {
@@ -260,6 +288,7 @@ export const foafSchema: SchemaDefinition = {
       required: false,
       description: 'Your school or university website',
       helpText: 'URL to your school or university website',
+      order: 7,
       validation: [{ type: 'url', message: 'Please enter a valid URL' }]
     }
   ],

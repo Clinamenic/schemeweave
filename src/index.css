@@ -2,5 +2,6 @@
 @import './styles/variables.css';
 @import './styles/reset.css';
 @import './styles/base.css';
+@import './styles/utilities.css';
 
 /* Additional global styles can go here */

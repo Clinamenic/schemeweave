@@ -21,6 +21,26 @@ export const SaveIcon: React.FC<IconProps> = ({ className = '', size = 16 }) => 
   </svg>
 );
 
+export const ExportIcon: React.FC<IconProps> = ({ className = '', size = 16 }) => (
+  <svg 
+    className={className}
+    width={size} 
+    height={size} 
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M0 0h24v24H0z" fill="none" stroke="none"/>
+    <path d="M14 3v4a1 1 0 0 0 1 1h4"/>
+    <path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/>
+    <path d="M12 11v6"/>
+    <path d="M9 14l3-3 3 3"/>
+  </svg>
+);
+
 export const ExpandSidebarIcon: React.FC<IconProps> = ({ className = '', size = 16 }) => (
   <svg 
     className={className}

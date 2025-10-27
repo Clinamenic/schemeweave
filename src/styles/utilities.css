@@ -67,15 +67,15 @@
 }
 
 .text-sm {
-    font-size: var(--text-sm);
+    font-size: var(--text-base);
 }
 
 .text-lg {
-    font-size: var(--text-lg);
+    font-size: var(--text-base);
 }
 
 .text-xl {
-    font-size: var(--text-xl);
+    font-size: var(--text-base);
 }
 
 .font-medium {
@@ -125,4 +125,482 @@
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border-width: 0;
+}
+
+/* Tag Input Components */
+.tag-input-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.tag-input-field {
+    display: flex;
+    align-items: center;
+    min-height: var(--pill-height-base);
+    padding: 0rem 0.5rem;
+    border: 1px solid #333333;
+    border-radius: 0.5rem;
+    background-color: #111111;
+    transition: border-color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tag-input-field:focus-within {
+    border-color: #007bff;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+}
+
+.tag-input-field.error {
+    border-color: #ff4444;
+}
+
+.tag-input-field.error:focus-within {
+    border-color: #ff4444;
+    box-shadow: 0 0 0 2px rgba(255, 68, 68, 0.2);
+}
+
+.tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    align-items: center;
+    margin-top: 0.25rem;
+    font-size: var(--font-size-sm);
+}
+
+.tag-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    height: var(--pill-height-base);
+    background-color: #00ff00;
+    color: #0c0c0c;
+    border-radius: var(--radius-sm);
+    font-size: var(--text-base);
+    font-weight: 500;
+    line-height: 1;
+    transition: background-color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tag-item:has(.tag-remove:hover) {
+    background-color: #ff4444;
+    color: white;
+}
+
+.tag-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}
+
+.tag-remove {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1rem;
+    height: 1rem;
+    border: none;
+    background: none;
+    color: inherit;
+    font-size: var(--text-base);
+    font-weight: 700;
+    line-height: 0;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0;
+    margin: 0;
+}
+
+
+.tag-remove:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.tag-input {
+    flex: 1;
+    min-width: 120px;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: var(--text-base);
+    color: #ffffff;
+    padding: 0.25rem;
+}
+
+.tag-input::placeholder {
+    color: #888888;
+}
+
+.tag-input:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.tag-input-help {
+    margin-top: 0.25rem;
+    font-size: var(--text-base);
+    color: #888888;
+    line-height: 1.5;
+}
+
+/* Sortable Field Styles */
+.sortable-field {
+    position: relative;
+    transition: var(--transition-base);
+    margin-bottom: var(--space-sm);
+    /* Add size constraints to prevent distortion */
+    min-width: 200px;
+    width: 100%;
+}
+
+.sortable-field:last-child {
+    margin-bottom: 0;
+}
+
+.sortable-field.dragging {
+    z-index: var(--z-modal);
+    /* Remove border from sortable-field */
+}
+
+.sortable-field.dragging .form-field {
+    /* Add border to form-field instead */
+    border: 0px solid var(--color-primary);
+    border-radius: var(--radius-md);
+    border-top-left-radius: 0px;
+}
+
+.field-container {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-sm);
+    /* Remove problematic fixed margin during drag */
+    margin-left: 24px;
+    background: var(--color-background);
+    border-top-right-radius: var(--radius-sm);
+    border-bottom-right-radius: var(--radius-sm);
+    border-bottom-left-radius: var(--radius-sm);
+    /* Add constraints to prevent distortion */
+    min-height: 40px;
+    width: calc(100% - 24px);
+    box-sizing: border-box;
+}
+
+/* Special handling for dragging state */
+.sortable-field.dragging .field-container {
+    margin-left: 24px;
+    width: calc(100% - 24px);
+    /* Preserve original layout during drag */
+    flex-shrink: 0;
+}
+
+.drag-handle {
+    position: absolute;
+    left: -24px;
+    top: 0;
+    width: 24px;
+    height: 100%;
+    /* Add constraints to prevent distortion */
+    min-height: 40px;
+    max-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: grab;
+    color: var(--color-text-tertiary);
+    transition: var(--transition-fast);
+    border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+    background: var(--color-background);
+    border: none;
+    /* Prevent handle from affecting layout during drag */
+    z-index: 1;
+    /* Add 45-degree striped background */
+    background: repeating-linear-gradient(
+    30deg,
+    var(--color-border),         /* Start color */
+    var(--color-border) 1px,    /* Stripe width */
+    var(--color-background) 1px,    /* Next color start */
+    var(--color-background) 7px     /* Stripe end */
+  );
+}
+
+.drag-handle:hover {
+    color: var(--color-text-secondary);
+    background: var(--color-background);
+    /* Update striped background on hover */
+    background: repeating-linear-gradient(
+    30deg,
+    var(--color-primary),         /* Start color */
+    var(--color-primary) 1px,    /* Stripe width */
+    var(--color-background) 1px,    /* Next color start */
+    var(--color-background) 7px     /* Stripe end */
+  );
+}
+
+.drag-handle:hover .form-field {
+    border-color: var(--color-primary);
+}
+
+.drag-handle:active {
+    cursor: grabbing;
+}
+
+/* Special handling for dragging state */
+.sortable-field.dragging .drag-handle {
+    /* Hide handle during drag to prevent layout conflicts */
+    opacity: 1;
+    border: none;
+    pointer-events: none;
+}
+
+
+
+/* Drag overlay styles */
+.drag-overlay {
+    opacity: 0.8;
+    box-shadow: var(--shadow-xl);
+    border: 0px solid var(--color-primary) !important;
+    border-radius: var(--radius-md);
+    /* Preserve original dimensions */
+    min-width: 200px;
+    max-width: 100%;
+    height: auto;
+    /* Prevent layout interference */
+    pointer-events: none;
+    z-index: var(--z-modal);
+}
+
+.drag-overlay .form-field {
+    /* Ensure form-field gets the drag styling in overlay */
+    border: 1px solid var(--color-primary);
+    border-radius: var(--radius-md);
+    border-top-left-radius: 0px;
+
+}
+
+.drag-overlay .drag-handle {
+    border-top: 1px solid var(--color-primary);
+    border-bottom: 1px solid var(--color-primary);
+    border-left: 1px solid var(--color-primary);
+    background: repeating-linear-gradient(
+    30deg,
+    var(--color-background),         /* Start color */
+    var(--color-background) 1px,    /* Stripe width */
+    var(--color-primary) 1px,    /* Next color start */
+    var(--color-primary) 7px     /* Stripe end */
+  );
+}
+
+/* Drop zone indicators */
+.drop-zone {
+    border: 2px dashed var(--color-primary);
+    background: var(--color-primary);
+    background-opacity: 0.05;
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    text-align: center;
+    color: var(--color-text-secondary);
+}
+
+.drop-zone.active {
+    border-color: var(--color-primary);
+    background: var(--color-primary);
+    background-opacity: 0.1;
+    color: var(--color-primary);
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: var(--z-modal);
+}
+
+.modal {
+    background: var(--color-background);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow: hidden;
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-lg);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.modal-title {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text);
+    margin: 0;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    padding: var(--space-xs);
+    border-radius: var(--radius-sm);
+    transition: var(--transition-fast);
+}
+
+.modal-close:hover {
+    background: var(--color-surface);
+    color: var(--color-text);
+}
+
+.modal-body {
+    padding: var(--space-lg);
+    overflow-y: auto;
+    max-height: calc(90vh - 120px);
+}
+
+.modal-actions {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: flex-end;
+    margin-top: var(--space-lg);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--color-border);
+}
+
+.field-checkbox {
+    margin-right: var(--space-sm);
+}
+
+/* Custom Field Styles */
+.field-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+.custom-badge {
+    background: var(--color-accent);
+    color: white;
+    font-size: var(--text-base);
+    padding: 2px var(--space-xs);
+    border-radius: var(--radius-sm);
+    margin-left: var(--space-xs);
+    font-weight: var(--font-weight-medium);
+}
+
+.field-remove-button {
+    background: var(--color-error);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: var(--text-base);
+    font-weight: bold;
+    transition: var(--transition-fast);
+}
+
+.field-remove-button:hover {
+    background: var(--color-error);
+    opacity: 0.8;
+}
+
+.terminal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-md) var(--space-lg);
+}
+
+.btn-sm {
+    padding: var(--space-xs) var(--space-sm);
+    font-size: var(--text-base);
+}
+
+/* Sortable Array Item Styles */
+.sortable-array-item {
+    position: relative;
+    transition: var(--transition-base);
+}
+
+.sortable-array-item.dragging {
+    z-index: var(--z-modal);
+    box-shadow: var(--shadow-md);
+    border: 0px solid var(--color-primary);
+    border-radius: var(--radius-sm);
+}
+
+.array-item-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+.array-item-drag-handle {
+    position: absolute;
+    right: var(--space-xs);
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: grab;
+    color: var(--color-text-tertiary);
+    transition: var(--transition-fast);
+    border-radius: var(--radius-sm);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    opacity: 0;
+}
+
+.array-item-container:hover .array-item-drag-handle {
+    opacity: 1;
+}
+
+.array-item-drag-handle:hover {
+    color: var(--color-text-secondary);
+    background: var(--color-background);
+    border-color: var(--color-primary);
+}
+
+.array-item-drag-handle:active {
+    cursor: grabbing;
+}
+
+.array-drag-icon {
+    width: 8px;
+    height: 8px;
+}
+
+/* Header Actions */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
 }

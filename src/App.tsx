@@ -3,7 +3,6 @@ import { useAppStore } from './stores/useAppStore';
 import { NavigationHeader } from './components/NavigationHeader';
 import { DocumentForm } from './components/DocumentForm';
 import { PreviewPanel } from './components/PreviewPanel';
-import { Toolbar } from './components/Toolbar';
 import './App.css';
 
 function App() {
@@ -39,14 +38,9 @@ function App() {
       <header className="app-header">
         <div className="header-content">
           <div className="logo-container">
-            <div className="terminal-prompt">
-              <span className="prompt-user">user@schemeweave</span>
-              <span className="prompt-separator">:</span>
-              <span className="prompt-path">~/semantic-docs</span>
-              <span className="prompt-symbol">$</span>
-            </div>
+            <div className="app-logo">ȿ</div>
+            <h1 className="app-title">schemeweave</h1>
           </div>
-          <h1 className="app-title">Schemeweave</h1>
           <div className="app-subtitle">
             Semantic Document Composer
           </div>
@@ -71,8 +65,6 @@ function App() {
       <NavigationHeader />
 
       <main className="app-main">
-        <Toolbar />
-        
         <div className={`app-content ${!showPreview ? 'preview-hidden' : ''}`}>
           <div className="app-center">
             {currentSchema && (

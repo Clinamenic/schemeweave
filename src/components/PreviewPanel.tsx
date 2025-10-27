@@ -1,29 +1,77 @@
 import React from 'react';
 import { useAppStore } from '../stores/useAppStore';
+import { schemas } from '../services/schemas';
 
 export const PreviewPanel: React.FC = () => {
-  const { formData, currentSchema, previewFormat, setPreviewFormat } = useAppStore();
+  const { 
+    formData, 
+    currentSchema, 
+    currentTemplate,
+    previewFormat, 
+    setPreviewFormat,
+    fieldOrder,
+    customFields
+  } = useAppStore();
+
+  const getOrderedFields = () => {
+    const schemaKey = `${currentSchema}-${currentTemplate || 'default'}`;
+    const schemaDef = schemas[currentSchema as keyof typeof schemas];
+    const templateFields = [...schemaDef.fields];
+    const userCustomFields = customFields[schemaKey] || [];
+    
+    // Combine template fields and custom fields
+    const allFields = [...templateFields, ...userCustomFields];
+    
+    // Get the field order from the store
+    const currentFieldOrder = fieldOrder[schemaKey] || {};
+    
+    // Sort fields by their order property, using store order if available
+    return allFields.sort((a, b) => {
+      // Use store order if available, otherwise fall back to field.order
+      const orderA = (currentFieldOrder as Record<string, number>)[a.id] !== undefined ? (currentFieldOrder as Record<string, number>)[a.id] : (a.order ?? 999);
+      const orderB = (currentFieldOrder as Record<string, number>)[b.id] !== undefined ? (currentFieldOrder as Record<string, number>)[b.id] : (b.order ?? 999);
+      return orderA - orderB;
+    });
+  };
 
   const generatePreview = () => {
+    const orderedFields = getOrderedFields();
+    
+    // Create the base document structure
     const baseDocument = {
       '@context': currentSchema === 'doap' 
         ? ['https://schema.org/', 'http://usefulinc.com/ns/doap#']
         : 'http://xmlns.com/foaf/0.1/',
-      '@type': currentSchema === 'doap' ? 'SoftwareApplication' : 'Person',
-      ...formData
+      '@type': currentSchema === 'doap' 
+        ? (formData.projectType || 'SoftwareApplication') 
+        : 'Person'
     };
+
+    // Add fields in the correct order
+    const orderedData: Record<string, any> = {};
+    orderedFields.forEach(field => {
+      const value = formData[field.id];
+      if (value !== undefined && value !== null && value !== '') {
+        // Skip projectType field since it's used for @type
+        if (field.id !== 'projectType') {
+          orderedData[field.id] = value;
+        }
+      }
+    });
+
+    const finalDocument = { ...baseDocument, ...orderedData };
 
     switch (previewFormat) {
       case 'json':
-        return JSON.stringify(baseDocument, null, 2);
+        return JSON.stringify(finalDocument, null, 2);
       case 'json-ld':
-        return JSON.stringify(baseDocument, null, 2);
+        return JSON.stringify(finalDocument, null, 2);
       case 'xml':
-        return convertToXML(baseDocument);
+        return convertToXML(finalDocument);
       case 'turtle':
-        return convertToTurtle(baseDocument);
+        return convertToTurtle(finalDocument);
       default:
-        return JSON.stringify(baseDocument, null, 2);
+        return JSON.stringify(finalDocument, null, 2);
     }
   };
 

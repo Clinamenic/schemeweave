@@ -7,9 +7,9 @@
   "name": "Schemeweave",
   "description": "Semantic Document Composer - Web-based tool for creating DOAP and FOAF documents with form-based interface and real-time JSON preview",
   "url": "https://github.com/clinamenic/schemeweave",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "dateCreated": "2025-10-26T00:00:00Z",
-  "dateModified": "2025-10-26T17:43:59.614Z",
+  "dateModified": "2025-10-27T19:08:22.754Z",
   "license": "https://opensource.org/licenses/MIT",
   "programmingLanguage": [
     "TypeScript",

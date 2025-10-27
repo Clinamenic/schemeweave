@@ -2,7 +2,7 @@
 
 body {
     font-family: var(--font-mono);
-    font-size: var(--font-size-md);
+    font-size: var(--text-base);
     color: var(--terminal-fg);
     background-color: var(--terminal-bg);
     margin: 0;
@@ -23,27 +23,27 @@ h6 {
 }
 
 h1 {
-    font-size: var(--font-size-xl);
+    font-size: var(--text-base);
 }
 
 h2 {
-    font-size: var(--font-size-lg);
+    font-size: var(--text-base);
 }
 
 h3 {
-    font-size: var(--font-size-md);
+    font-size: var(--text-base);
 }
 
 h4 {
-    font-size: var(--font-size-sm);
+    font-size: var(--text-base);
 }
 
 h5 {
-    font-size: var(--font-size-sm);
+    font-size: var(--text-base);
 }
 
 h6 {
-    font-size: var(--font-size-xs);
+    font-size: var(--text-base);
 }
 
 p {
@@ -53,13 +53,13 @@ p {
 }
 
 small {
-    font-size: var(--font-size-xs);
+    font-size: var(--text-base);
     color: var(--ui-text-muted);
 }
 
 code {
     font-family: var(--font-mono);
-    font-size: var(--font-size-sm);
+    font-size: var(--text-base);
     background-color: var(--ui-surface);
     padding: var(--spacing-xs) var(--spacing-sm);
     border-radius: 4px;

@@ -1,56 +1,126 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useAppStore } from '../stores/useAppStore';
 import { schemas } from '../services/schemas';
+import { ExportDialog } from './ExportDialog';
+import { SaveIcon, ExportIcon, ExpandSidebarIcon, CollapseSidebarIcon } from './icons';
 
 export const NavigationHeader: React.FC = () => {
-  const { currentSchema, currentTemplate, setCurrentSchema, setCurrentTemplate } = useAppStore();
+  const { 
+    currentSchema, 
+    currentTemplate, 
+    setCurrentSchema, 
+    setCurrentTemplate,
+    saveDocument,
+    showPreview,
+    setShowPreview,
+    isDirty
+  } = useAppStore();
+
+  const [exportDialog, setExportDialog] = useState<{ isOpen: boolean; format: string }>({
+    isOpen: false,
+    format: 'json'
+  });
 
   const schema = currentSchema ? schemas[currentSchema as keyof typeof schemas] : null;
 
+  const handleSchemaChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const value = event.target.value;
+    setCurrentSchema(value || null);
+    // Reset template when schema changes
+    setCurrentTemplate(undefined);
+  };
+
+  const handleTemplateChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const value = event.target.value;
+    setCurrentTemplate(value || undefined);
+  };
+
+  const handleExport = () => {
+    setExportDialog({ isOpen: true, format: 'json' });
+  };
+
+  const closeExportDialog = () => {
+    setExportDialog({ isOpen: false, format: 'json' });
+  };
+
   return (
-    <div className="navigation-header">
-      <div className="nav-primary">
-        <div className="nav-title">Schemeweave</div>
-        <div className="nav-schema">
-          <span className="nav-label">Schema:</span>
-          <div className="schema-tabs">
-            {Object.entries(schemas).map(([key, schemaDef]) => (
-              <button
-                key={key}
-                className={`schema-tab ${currentSchema === key ? 'active' : ''}`}
-                onClick={() => setCurrentSchema(key)}
+    <>
+      <div className="navigation-header">
+        <div className="nav-content">
+          <div className="nav-selectors">
+            <div className="nav-schema">
+              <span className="nav-label">Schema:</span>
+              <select 
+                className="schema-dropdown"
+                value={currentSchema || ''}
+                onChange={handleSchemaChange}
               >
-                {schemaDef.name}
-              </button>
-            ))}
+                <option value="">Select Schema</option>
+                {Object.entries(schemas).map(([key, schemaDef]) => (
+                  <option key={key} value={key}>
+                    {schemaDef.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+            
+            {schema && (
+              <div className="nav-template">
+                <span className="nav-label">Template:</span>
+                <select 
+                  className="template-dropdown"
+                  value={currentTemplate || ''}
+                  onChange={handleTemplateChange}
+                >
+                  <option value="">Custom</option>
+                  {schema.templates.map((template) => (
+                    <option key={template.id} value={template.id}>
+                      {template.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
+          </div>
+
+          <div className="nav-actions">
+            <button 
+              className="nav-button primary icon-only"
+              onClick={saveDocument}
+              disabled={!isDirty}
+              title="Save Document"
+            >
+              <SaveIcon className="button-icon" size={16} />
+            </button>
+            
+            <button 
+              className="nav-button icon-only"
+              onClick={handleExport}
+              title="Export Document"
+            >
+              <ExportIcon className="button-icon" size={16} />
+            </button>
+            
+            <button 
+              className={`nav-button toggle icon-only ${showPreview ? 'active' : ''}`}
+              onClick={() => setShowPreview(!showPreview)}
+              title={showPreview ? 'Hide Preview' : 'Show Preview'}
+            >
+              {showPreview ? (
+                <CollapseSidebarIcon className="button-icon" size={16} />
+              ) : (
+                <ExpandSidebarIcon className="button-icon" size={16} />
+              )}
+            </button>
           </div>
         </div>
       </div>
-      
-      {schema && (
-        <div className="nav-secondary">
-          <div className="nav-template">
-            <span className="nav-label">Template:</span>
-            <div className="template-tabs">
-              <button
-                className={`template-tab ${!currentTemplate ? 'active' : ''}`}
-                onClick={() => setCurrentTemplate(undefined)}
-              >
-                Custom
-              </button>
-              {schema.templates.map((template) => (
-                <button
-                  key={template.id}
-                  className={`template-tab ${currentTemplate === template.id ? 'active' : ''}`}
-                  onClick={() => setCurrentTemplate(template.id)}
-                >
-                  {template.name}
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
+
+      <ExportDialog 
+        isOpen={exportDialog.isOpen}
+        onClose={closeExportDialog}
+        format={exportDialog.format}
+      />
+    </>
   );
 };
