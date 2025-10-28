@@ -3,7 +3,7 @@
 body {
     font-family: var(--font-mono);
     font-size: var(--text-base);
-    color: var(--terminal-fg);
+    color: var(--color-primary);
     background-color: var(--terminal-bg);
     margin: 0;
     padding: 0;
@@ -18,7 +18,7 @@ h5,
 h6 {
     font-weight: 700;
     line-height: 1.25;
-    color: var(--terminal-fg);
+    color: var(--color-primary);
     font-family: var(--font-mono);
 }
 
@@ -63,7 +63,7 @@ code {
     background-color: var(--ui-surface);
     padding: var(--spacing-xs) var(--spacing-sm);
     border-radius: 4px;
-    color: var(--terminal-fg);
+    color: var(--color-primary);
     border: 1px solid var(--terminal-border);
 }
 
@@ -78,18 +78,16 @@ button:focus-visible,
 a:focus-visible,
 input:focus-visible,
 textarea:focus-visible {
-    outline: 2px solid var(--terminal-fg);
+    outline: 2px solid var(--color-primary);
     outline-offset: 2px;
 }
 
 input,
 textarea,
 select {
-    border: 1px solid var(--terminal-border);
     border-radius: 4px;
-    padding: var(--spacing-sm) var(--spacing-md);
-    background-color: var(--ui-surface);
-    color: var(--terminal-fg);
+    padding: 0;
+    color: var(--color-primary);
     transition: border-color 0.2s ease;
     font-family: var(--font-mono);
 }
@@ -97,7 +95,7 @@ select {
 input:focus,
 textarea:focus,
 select:focus {
-    border-color: var(--terminal-fg);
+    border-color: var(--color-primary);
     outline: none;
     box-shadow: 0 0 0 2px rgba(0, 255, 0, 0.2);
 }
@@ -110,7 +108,7 @@ a {
 }
 
 a:hover {
-    color: var(--terminal-fg);
+    color: var(--color-primary);
 }
 
 /* Scrollbars for terminal aesthetic */
@@ -129,5 +127,5 @@ a:hover {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--terminal-fg);
+    background: var(--color-primary);
 }

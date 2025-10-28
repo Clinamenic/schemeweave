@@ -1,12 +1,11 @@
 /* CSS Custom Properties (Design Tokens) */
 :root {
     /* Colors - Semantic naming */
-    --color-primary: #00ff00;
-    --color-primary-dark: #00cc00;
-    --color-primary-light: #33ff33;
+    --color-primary: #d7ffd7;
+    --color-primary-dark: #beffbe;
+    --color-primary-light: #f6fff6;
 
-    --color-secondary: #7c3aed;
-    --color-accent: #06b6d4;
+    --color-primary-transparent: rgba(215, 255, 215, 0.25);
 
     --color-background: #ffffff;
     --color-surface: #f9fafb;
@@ -20,6 +19,8 @@
     --color-warning: #f59e0b;
     --color-error: #ef4444;
     --color-info: #3b82f6;
+
+    --color-background: #191b19;
 
     /* Spacing - Consistent scale */
     --space-xs: 0.25rem;
@@ -104,7 +105,6 @@
 /* Dark mode support (optional) */
 @media (prefers-color-scheme: dark) {
     :root {
-        --color-background: #111827;
         --color-surface: #1f2937;
         --color-border: #374151;
 

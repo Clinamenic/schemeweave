@@ -3,7 +3,6 @@ import { useAppStore } from '../stores/useAppStore';
 import { schemas } from '../services/schemas';
 import { SortableTagInput } from './ui/SortableTagInput';
 import { SortableField } from './SortableField';
-import { AddCustomFieldModal } from './AddCustomFieldModal';
 import {
   DndContext,
   closestCenter,
@@ -30,13 +29,9 @@ export const DocumentForm: React.FC<DocumentFormProps> = ({ schema, template }) 
     updateFormData, 
     validationErrors, 
     reorderField, 
-    addCustomField, 
-    removeCustomField,
-    customFields,
-    resetToTemplateOrder
+    customFields
   } = useAppStore();
   const schemaDef = schemas[schema as keyof typeof schemas];
-  const [showAddFieldModal, setShowAddFieldModal] = useState(false);
   const [activeField, setActiveField] = useState<string | null>(null);
 
   const sensors = useSensors(
@@ -231,27 +226,7 @@ export const DocumentForm: React.FC<DocumentFormProps> = ({ schema, template }) 
 
   return (
     <div className="document-form">
-      <div className="terminal-window">
-        <div className="terminal-header">
-          <div className="terminal-title">Document Composer</div>
-          <div className="header-actions">
-            <button
-              type="button"
-              className="btn btn-secondary btn-sm"
-              onClick={resetToTemplateOrder}
-              title="Reset fields to template order"
-            >
-              Reset Order
-            </button>
-            <button
-              type="button"
-              className="btn btn-primary btn-sm"
-              onClick={() => setShowAddFieldModal(true)}
-            >
-              + Add Custom Field
-            </button>
-          </div>
-        </div>
+      <div className="terminal-window" id="document-composer">
         <div className="terminal-body">
           <DndContext
             sensors={sensors}
@@ -277,12 +252,6 @@ export const DocumentForm: React.FC<DocumentFormProps> = ({ schema, template }) 
           </DndContext>
         </div>
       </div>
-      
-      <AddCustomFieldModal
-        isOpen={showAddFieldModal}
-        onClose={() => setShowAddFieldModal(false)}
-        onAddField={addCustomField}
-      />
     </div>
   );
 };

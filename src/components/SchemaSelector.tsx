@@ -30,7 +30,6 @@ export const SchemaSelector: React.FC = () => {
                 onClick={() => setCurrentSchema(key)}
               >
                 <div className="schema-name">{schema.name}</div>
-                <div className="schema-description">{schema.description}</div>
                 <div className="schema-namespace">{schema.namespace}</div>
               </button>
             ))}

@@ -180,9 +180,6 @@ export interface FoafDocument {
   sha1sum?: string;
   plan?: string;
   myersBriggs?: string;
-  workplaceHomepage?: string;
-  workInfoHomepage?: string;
-  schoolHomepage?: string;
   account?: Account[];
   holdsAccount?: Account[];
   accountServiceHomepage?: string;
@@ -194,9 +191,6 @@ export interface FoafDocument {
   yahooChatID?: string;
   phone?: string;
   mobile?: string;
-  workplaceHomepage?: string;
-  workInfoHomepage?: string;
-  schoolHomepage?: string;
 }
 
 export interface Account {

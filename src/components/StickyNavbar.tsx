@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { useAppStore } from '../stores/useAppStore';
 import { schemas } from '../services/schemas';
 import { ExportDialog } from './ExportDialog';
-import { SaveIcon, ExportIcon, ExpandSidebarIcon, CollapseSidebarIcon } from './icons';
+import { AddCustomFieldModal } from './AddCustomFieldModal';
+import { SaveIcon, ExportIcon, ExpandSidebarIcon, CollapseSidebarIcon, ResetIcon, PlusIcon } from './icons';
 
-export const NavigationHeader: React.FC = () => {
+export const StickyNavbar: React.FC = () => {
   const { 
     currentSchema, 
     currentTemplate, 
@@ -13,7 +14,9 @@ export const NavigationHeader: React.FC = () => {
     saveDocument,
     showPreview,
     setShowPreview,
-    isDirty
+    isDirty,
+    addCustomField,
+    resetToTemplateOrder
   } = useAppStore();
 
   const [exportDialog, setExportDialog] = useState<{ isOpen: boolean; format: string }>({
@@ -21,11 +24,13 @@ export const NavigationHeader: React.FC = () => {
     format: 'json'
   });
 
+  const [showAddFieldModal, setShowAddFieldModal] = useState(false);
+
   const schema = currentSchema ? schemas[currentSchema as keyof typeof schemas] : null;
 
   const handleSchemaChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
-    setCurrentSchema(value || null);
+    setCurrentSchema(value);
     // Reset template when schema changes
     setCurrentTemplate(undefined);
   };
@@ -45,13 +50,13 @@ export const NavigationHeader: React.FC = () => {
 
   return (
     <>
-      <div className="navigation-header">
-        <div className="nav-content">
-          <div className="nav-selectors">
-            <div className="nav-schema">
-              <span className="nav-label">Schema:</span>
+      <div className="sticky-navbar">
+        <div className="navbar-content">
+          {/* Left side - Schema and Template selectors */}
+          <div className="navbar-left">
+            <div className="navbar-schema">
               <select 
-                className="schema-dropdown"
+                className="navbar-dropdown"
                 value={currentSchema || ''}
                 onChange={handleSchemaChange}
               >
@@ -65,10 +70,9 @@ export const NavigationHeader: React.FC = () => {
             </div>
             
             {schema && (
-              <div className="nav-template">
-                <span className="nav-label">Template:</span>
+              <div className="navbar-template">
                 <select 
-                  className="template-dropdown"
+                  className="navbar-dropdown"
                   value={currentTemplate || ''}
                   onChange={handleTemplateChange}
                 >
@@ -81,11 +85,36 @@ export const NavigationHeader: React.FC = () => {
                 </select>
               </div>
             )}
+
+            {/* Reset template button */}
+            {currentTemplate && (
+              <button
+                type="button"
+                className="navbar-button icon-only"
+                onClick={resetToTemplateOrder}
+                title="Reset fields to template order"
+              >
+                <ResetIcon className="button-icon" size={16} />
+              </button>
+            )}
+
+            {/* New custom field button */}
+            {schema && (
+              <button
+                type="button"
+                className="navbar-button primary icon-only"
+                onClick={() => setShowAddFieldModal(true)}
+                title="Add custom field"
+              >
+                <PlusIcon className="button-icon" size={16} />
+              </button>
+            )}
           </div>
 
-          <div className="nav-actions">
+          {/* Right side - Action buttons */}
+          <div className="navbar-right">
             <button 
-              className="nav-button primary icon-only"
+              className="navbar-button primary icon-only"
               onClick={saveDocument}
               disabled={!isDirty}
               title="Save Document"
@@ -94,7 +123,7 @@ export const NavigationHeader: React.FC = () => {
             </button>
             
             <button 
-              className="nav-button icon-only"
+              className="navbar-button icon-only"
               onClick={handleExport}
               title="Export Document"
             >
@@ -102,7 +131,7 @@ export const NavigationHeader: React.FC = () => {
             </button>
             
             <button 
-              className={`nav-button toggle icon-only ${showPreview ? 'active' : ''}`}
+              className={`navbar-button toggle icon-only ${showPreview ? 'active' : ''}`}
               onClick={() => setShowPreview(!showPreview)}
               title={showPreview ? 'Hide Preview' : 'Show Preview'}
             >
@@ -120,6 +149,12 @@ export const NavigationHeader: React.FC = () => {
         isOpen={exportDialog.isOpen}
         onClose={closeExportDialog}
         format={exportDialog.format}
+      />
+
+      <AddCustomFieldModal
+        isOpen={showAddFieldModal}
+        onClose={() => setShowAddFieldModal(false)}
+        onAddField={addCustomField}
       />
     </>
   );

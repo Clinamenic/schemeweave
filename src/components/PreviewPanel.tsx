@@ -14,6 +14,10 @@ export const PreviewPanel: React.FC = () => {
   } = useAppStore();
 
   const getOrderedFields = () => {
+    if (!currentSchema) {
+      return [];
+    }
+    
     const schemaKey = `${currentSchema}-${currentTemplate || 'default'}`;
     const schemaDef = schemas[currentSchema as keyof typeof schemas];
     const templateFields = [...schemaDef.fields];
@@ -35,6 +39,10 @@ export const PreviewPanel: React.FC = () => {
   };
 
   const generatePreview = () => {
+    if (!currentSchema) {
+      return 'Select a schema to see preview';
+    }
+    
     const orderedFields = getOrderedFields();
     
     // Create the base document structure
@@ -134,22 +142,34 @@ export const PreviewPanel: React.FC = () => {
 
   return (
     <div className="preview-panel">
-      <div className="terminal-window">
-        <div className="terminal-header">
-          <div className="terminal-title">Preview</div>
-          <div className="format-selector">
-            <select 
-              value={previewFormat} 
-              onChange={(e) => setPreviewFormat(e.target.value as any)}
-              className="format-select"
-            >
-              <option value="json">JSON</option>
-              <option value="json-ld">JSON-LD</option>
-              <option value="xml">XML</option>
-              <option value="turtle">Turtle</option>
-            </select>
-          </div>
+      <div className="terminal-window" id="preview">
+        <div className="format-buttons">
+          <button 
+            className={`format-button ${previewFormat === 'json' ? 'active' : ''}`}
+            onClick={() => setPreviewFormat('json')}
+          >
+            JSON
+          </button>
+          <button 
+            className={`format-button ${previewFormat === 'json-ld' ? 'active' : ''}`}
+            onClick={() => setPreviewFormat('json-ld')}
+          >
+            JSON-LD
+          </button>
+          <button 
+            className={`format-button ${previewFormat === 'xml' ? 'active' : ''}`}
+            onClick={() => setPreviewFormat('xml')}
+          >
+            XML
+          </button>
+          <button 
+            className={`format-button ${previewFormat === 'turtle' ? 'active' : ''}`}
+            onClick={() => setPreviewFormat('turtle')}
+          >
+            Turtle
+          </button>
         </div>
+        
         <div className="terminal-body">
           <div className="preview-content">
             <pre className="preview-code">

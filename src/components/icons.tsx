@@ -78,3 +78,39 @@ export const CollapseSidebarIcon: React.FC<IconProps> = ({ className = '', size 
     <path d="M9 10l2 2l-2 2"/>
   </svg>
 );
+
+export const PlusIcon: React.FC<IconProps> = ({ className = '', size = 16 }) => (
+  <svg 
+    className={className}
+    width={size} 
+    height={size} 
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M0 0h24v24H0z" fill="none" stroke="none"/>
+    <path d="M12 5v14"/>
+    <path d="M5 12h14"/>
+  </svg>
+);
+
+export const ResetIcon: React.FC<IconProps> = ({ className = '', size = 16 }) => (
+  <svg 
+    className={className}
+    width={size} 
+    height={size} 
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M0 0h24v24H0z" fill="none" stroke="none"/>
+    <path d="M20 11A8.1 8.1 0 0 0 4.5 9M4 5v4h4"/>
+    <path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4"/>
+  </svg>
+);

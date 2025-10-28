@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useAppStore } from './stores/useAppStore';
-import { NavigationHeader } from './components/NavigationHeader';
+import { StickyNavbar } from './components/StickyNavbar';
+import { StickyFooter } from './components/StickyFooter';
 import { DocumentForm } from './components/DocumentForm';
 import { PreviewPanel } from './components/PreviewPanel';
 import './App.css';
@@ -10,24 +11,17 @@ function App() {
     currentSchema, 
     currentTemplate, 
     showPreview, 
-    formData,
     isDirty 
   } = useAppStore();
 
-  const [isAnimating, setIsAnimating] = useState(false);
   const [shouldRenderPreview, setShouldRenderPreview] = useState(showPreview);
 
   useEffect(() => {
     if (showPreview) {
       setShouldRenderPreview(true);
-      setIsAnimating(true);
-      const timer = setTimeout(() => setIsAnimating(false), 300);
-      return () => clearTimeout(timer);
     } else {
-      setIsAnimating(true);
       const timer = setTimeout(() => {
         setShouldRenderPreview(false);
-        setIsAnimating(false);
       }, 300);
       return () => clearTimeout(timer);
     }
@@ -35,6 +29,8 @@ function App() {
 
   return (
     <div className="app">
+      <StickyNavbar />
+
       <header className="app-header">
         <div className="header-content">
           <div className="logo-container">
@@ -44,25 +40,8 @@ function App() {
           <div className="app-subtitle">
             Semantic Document Composer
           </div>
-          <div className="version-info">
-            <span className="version-badge">
-              v{import.meta.env.VITE_APP_VERSION || '0.1.0'}
-            </span>
-            <div className="company-container">
-              <a
-                href="https://www.clinamenic.com?ref=schemeweave"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="company-link"
-              >
-                by Clinamenic LLC
-              </a>
-            </div>
-          </div>
         </div>
       </header>
-
-      <NavigationHeader />
 
       <main className="app-main">
         <div className={`app-content ${!showPreview ? 'preview-hidden' : ''}`}>
@@ -119,6 +98,8 @@ function App() {
           <span className="save-text">Unsaved changes</span>
         </div>
       )}
+
+      <StickyFooter />
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import { SchemaDefinition } from '../types';
+import { APP_VERSION } from '../utils/version';
 
 export const doapSchema: SchemaDefinition = {
   name: 'DOAP',
@@ -167,7 +168,7 @@ export const doapSchema: SchemaDefinition = {
         projectType: 'SoftwareApplication',
         name: '',
         description: '',
-        version: '0.1.0',
+        version: APP_VERSION,
         author: {
           name: '',
           email: '',
@@ -186,7 +187,7 @@ export const doapSchema: SchemaDefinition = {
         projectType: 'WebApplication',
         name: '',
         description: '',
-        version: '0.1.0',
+        version: APP_VERSION,
         author: {
           name: '',
           email: '',

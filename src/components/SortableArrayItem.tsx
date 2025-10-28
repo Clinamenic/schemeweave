@@ -10,7 +10,6 @@ interface SortableArrayItemProps {
 
 export const SortableArrayItem: React.FC<SortableArrayItemProps> = ({ 
   id, 
-  value, 
   children 
 }) => {
   const {

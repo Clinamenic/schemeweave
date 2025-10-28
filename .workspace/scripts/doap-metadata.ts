@@ -9,6 +9,21 @@ export interface DoapMetadataOptions {
 export function doapMetadataPlugin(options: DoapMetadataOptions): Plugin {
     return {
         name: 'doap-metadata',
+        configResolved(config) {
+            // Inject environment variables from doap.json
+            try {
+                const doapData = JSON.parse(fs.readFileSync(options.doapPath, 'utf8'));
+                
+                // Set environment variables for Vite
+                config.env.VITE_APP_VERSION = doapData.version || '0.0.0';
+                config.env.VITE_APP_NAME = doapData.name || 'Unknown App';
+                config.env.VITE_APP_DESCRIPTION = doapData.description || '';
+                
+                console.log(`🔧 Injected environment variables: VITE_APP_VERSION=${config.env.VITE_APP_VERSION}`);
+            } catch (error) {
+                console.warn('Warning: Could not read doap.json for environment variable injection:', error);
+            }
+        },
         writeBundle() {
             // Copy doap.json to dist directory after build is complete
             try {
