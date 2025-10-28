@@ -5,6 +5,31 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.1] - 2025-10-27
+
+### Added
+
+- feat(ui): Added favicon support with PNG icon integration
+- feat(components): StickyFooter and StickyNavbar components for enhanced navigation
+- feat(utils): Version utility for dynamic version display
+
+### Changed
+
+- refactor(ui): Enhanced HTML metadata structure and favicon references
+- refactor(styles): Improved CSS architecture with semantic styling approach
+- refactor(components): Component restructuring for better maintainability
+- refactor(navigation): Replaced NavigationHeader with StickyNavbar for better UX
+- refactor(toolbar): Removed Toolbar component in favor of integrated navigation
+
+### Fixed
+
+- fix(ui): Updated favicon references to use correct PNG format
+- fix(styles): Enhanced responsive design and component styling
+
+### Commit Reference
+
+- Release commit: 4d0d064 (2025-10-27T19:45:52-07:00)
+
 ## [0.3.0] - 2025-10-27
 
 ### Added
