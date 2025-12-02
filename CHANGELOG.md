@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.2] - 2025-12-01
+
+### Changed
+
+- **Documentation Organization**: Reorganized documentation structure, moved SAWA Framework Specification to reference docs
+- **Icon Organization**: Consolidated icons into dedicated icons directory with clearer naming
+- **README Updates**: Added comprehensive deployment information with Arweave transaction details and alternative access points
+
+### Fixed
+
+- **Component Integration**: Fixed removeCustomField integration in DocumentForm component
+
+**Commit Reference**: 8fa475e
+
 ## [0.3.1] - 2025-10-27
 
 ### Added
