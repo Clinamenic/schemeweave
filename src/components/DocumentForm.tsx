@@ -29,7 +29,8 @@ export const DocumentForm: React.FC<DocumentFormProps> = ({ schema, template }) 
     updateFormData, 
     validationErrors, 
     reorderField, 
-    customFields
+    customFields,
+    removeCustomField
   } = useAppStore();
   const schemaDef = schemas[schema as keyof typeof schemas];
   const [activeField, setActiveField] = useState<string | null>(null);

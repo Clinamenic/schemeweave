@@ -1,6 +1,6 @@
 {
   "name": "schemeweave",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "type": "module",
   "description": "Semantic Document Composer - Web-based tool for creating DOAP and FOAF documents with form-based interface and real-time JSON preview",
   "scripts": {

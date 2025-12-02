@@ -674,6 +674,7 @@ body {
   min-height: 0;
   flex: 1;
   transition: flex 0.3s ease-in-out;
+  border-radius: 0 !important;
 }
 
 .app-content.preview-hidden .app-center {
@@ -794,13 +795,15 @@ body {
 
 .terminal-body {
   padding: 0;
-  min-height: 200px;
+  border-radius: 0;
 }
+
 
 #document-composer {
   background: transparent;
   border: none;
   padding: 0 !important;
+  border-radius: 0 !important;
 }
 
 .terminal-line {
@@ -919,7 +922,7 @@ body {
 /* Document Form */
 .form-content {
   margin: 0;
-  
+  border-radius: 0 !important;
 }
 
 .form-field {

@@ -200,13 +200,18 @@ Schemeweave follows semantic versioning with automated version management:
 - [Development Workflow](.workspace/context.md)
 - [Dithering Texture Strategy](.workspace/docs/temp/2025-01-26-dithering-texture-strategy.md)
 
-## Arweave Deployment
+## Deployment
 
-Your app will be **permanently accessible** on Arweave at:
+This application is deployed on Arweave and accessible at:
+- **Primary URL**: https://arweave.net/7YOG_B2X7eff3fxXPym8IKUr351nPHMA2XTUaIpNzug
+- **Project Metadata**: https://arweave.net/7YOG_B2X7eff3fxXPym8IKUr351nPHMA2XTUaIpNzug/doap.json
+- **Version**: 0.3.1
+- **Deployed**: 2025-10-27
 
-```
-https://arweave.net/[TRANSACTION_ID]
-```
+### Alternative Access Points
+- https://7YOG_B2X7eff3fxXPym8IKUr351nPHMA2XTUaIpNzug.arweave.net
+- https://ar.io/7YOG_B2X7eff3fxXPym8IKUr351nPHMA2XTUaIpNzug
+- https://arweave.dev/7YOG_B2X7eff3fxXPym8IKUr351nPHMA2XTUaIpNzug
 
 ### Optional: ArNS (Arweave Name System)
 

@@ -26,6 +26,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - fix(ui): Updated favicon references to use correct PNG format
 - fix(styles): Enhanced responsive design and component styling
 
+### Deployment
+
+- **Transaction ID**: 7YOG_B2X7eff3fxXPym8IKUr351nPHMA2XTUaIpNzug
+- **URL**: https://arweave.net/7YOG_B2X7eff3fxXPym8IKUr351nPHMA2XTUaIpNzug
+- **Environment**: production
+- **Deployment Date**: 2025-10-27T19:45:52-07:00
+
 ### Commit Reference
 
 - Release commit: 4d0d064 (2025-10-27T19:45:52-07:00)
